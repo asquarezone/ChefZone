@@ -6,10 +6,15 @@
 
 # add recipe to configure the apt-update or yum update
 
-apt-update if node["platform"] == "ubuntu" do
-    action  :update
-end
+case node[:platform]
 
-yum-update if node["platform"] == "centos" do
-    action  :update
+  when 'debian', 'ubuntu'
+    apt-update 'debianplatform'do
+        action  :update
+  end
+
+  when 'centos','redhat',
+    yum-update if node["platform"] == "centos" do
+        action  :update
+  end  
 end
