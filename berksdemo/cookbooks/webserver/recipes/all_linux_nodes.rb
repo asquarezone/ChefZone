@@ -6,15 +6,8 @@
 
 # add recipe to configure the apt-update or yum update
 
-case node[:platform]
-
-  when 'debian', 'ubuntu'
-    apt-update 'debianplatform' do
-        action  :update
-  end
-
-  when 'centos','redhat',
-    yum-update 'rhelplatform' do
-        action  :update
-  end
+apt_update 'debianplaform' do
+  frequency 3600
+  action :periodic
+  only_if {node["platform"] == "ubuntu"}
 end
