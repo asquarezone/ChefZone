@@ -9,12 +9,12 @@
 case node[:platform]
 
   when 'debian', 'ubuntu'
-    apt-update 'debianplatform'do
+    apt-update 'debianplatform' do
         action  :update
   end
 
   when 'centos','redhat',
-    yum-update if node["platform"] == "centos" do
+    yum-update 'rhelplatform' do
         action  :update
-  end  
+  end
 end
