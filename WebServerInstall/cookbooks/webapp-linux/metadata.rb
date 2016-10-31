@@ -4,7 +4,7 @@ maintainer_email 'you@example.com'
 license 'all_rights'
 description 'Installs/Configures webapp-linux'
 long_description 'Installs/Configures webapp-linux'
-version '0.1.0'
+version '0.1.5'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link
@@ -16,3 +16,4 @@ version '0.1.0'
 
 depends 'apt', '~> 5.0.0'
 depends 'httpd', '~> 0.4.4'
+depends 'firewall', '~> 2.5.3'

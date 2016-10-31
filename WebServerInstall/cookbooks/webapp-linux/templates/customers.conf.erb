@@ -1,0 +1,27 @@
+<VirtualHost *:80>
+  ServerName <%= node['hostname'] %>
+  ServerAdmin 'chef@ASquareZone.com'
+
+  DocumentRoot <%= node['webapp-linux']['document_root'] %>
+  <Directory />
+          Options FollowSymLinks
+          AllowOverride None
+  </Directory>
+  <Directory <%= node['webapp-linux']['document_root'] %> >
+          Options Indexes FollowSymLinks MultiViews
+          AllowOverride None
+          Order allow,deny
+          allow from all
+  </Directory>
+
+  ErrorLog /var/log/apache2/error.log
+
+  LogLevel warn
+
+  CustomLog /var/log/apache2/access.log combined
+  ServerSignature Off
+
+  AddType application/x-httpd-php .php
+  AddType application/x-httpd-php-source .phps
+  DirectoryIndex index.php index.html
+</VirtualHost>
