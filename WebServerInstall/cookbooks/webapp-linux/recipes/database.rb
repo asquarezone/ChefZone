@@ -12,9 +12,17 @@
 #  content File.read("c:/encrypted_data_bag_secret")
 #  action :create
 #end
+# Write seed_file to file system
+cookbook_file  node['webapp-linux']['password']['secret-path'] do
+  source 'encrypted_data_bag_secret'
+  owner 'root'
+  group 'root'
+  mode '0600'
+  action :create
+end
 
 #Configure the mysql_chef_gem
-mysql_chef_gem 'default' do
+mysql2_chef_gem 'default' do
   action :install
 end
 
@@ -51,7 +59,7 @@ mysql_database_user node['webapp-linux']['database']['username'] do
     :username => node['webapp-linux']['database']['username'],
     :password => root_password_databag_item['password']
   )
-  password user_password_databag_item
+  password root_password_databag_item['password']
   database_name  node['webapp-linux']['database']['dbname']
   host node['webapp-linux']['database']['host']
   action [:create,:grant]
@@ -70,4 +78,5 @@ end
 # Seed My SQl and test data
 execute 'initialize database' do
   command "mysql -h #{node['webapp-linux']['database']['host']} -u #{node['webapp-linux']['database']['username']} -p #{user_password_databag_item['password']} -D #{node['webapp-linux']['database']['dbname']} < #{node['webapp-linux']['database']['seed_file']}"
+  not_if "mysql -h #{node['webapp-linux']['database']['host']} -u #{node['webapp-linux']['database']['username']} -p #{user_password_databag_item['password']} -D #{node['webapp-linux']['database']['dbname']} -e 'describe_customers;'"
 end
