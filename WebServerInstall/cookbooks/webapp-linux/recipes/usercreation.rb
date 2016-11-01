@@ -4,15 +4,7 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-node.default['webapp-linux']['user'] ='web_admin'
-node.default['webapp-linux']['group'] ='web_admin'
-
-
-
-
-group node['webapp-linux']['group'] do
-  action :create
-end
+group node['webapp-linux']['group']
 
 user node['webapp-linux']['user'] do
   group node['webapp-linux']['group']

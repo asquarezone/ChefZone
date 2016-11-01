@@ -5,12 +5,6 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
 #Install Apache and Start the Apache Service
-
-node.default['webapp-linux']['document_root']='/var/www/customers/public_html'
-
-node.default['firewall']['allow_ssh'] = true
-
-
 httpd_service 'customers' do
   mpm 'prefork'
   action [:create, :start]
