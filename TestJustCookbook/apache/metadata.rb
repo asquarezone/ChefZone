@@ -16,5 +16,5 @@ version '0.1.0'
 
 # dependencies
 depends 'httpd', '~> 0.4.4'
-depends 'firewall', '~> 2.5.3'
+
 
