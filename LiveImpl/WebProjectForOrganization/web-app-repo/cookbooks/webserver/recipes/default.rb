@@ -4,11 +4,10 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-if node['platform_family'] == 'rhel'
+case node['platform_family'] 
+ when 'rhel'
   include_recipe 'selinux::permissive'
-end
-
-if node['platform_family'] == 'debian'
+ when 'debian'
   include_recipe 'apt::default'
 end
 
