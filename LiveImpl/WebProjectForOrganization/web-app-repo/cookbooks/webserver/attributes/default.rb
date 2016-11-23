@@ -6,4 +6,5 @@ default['webserver']['group'] = 'web_admin'
 default['webserver']['document_root'] = '/var/www/customers/public_html'
 
 
-default['webserver']['db_config']['root_password']= 'root'
+#default['webserver']['db_config']['root_password']= 'root'
+default['webserver']['db_config']['secretkey_path'] ='/etc/chef/encrypted_data_bag_secret'
