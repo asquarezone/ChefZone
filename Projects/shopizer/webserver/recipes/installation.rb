@@ -3,6 +3,8 @@
 # Recipe:: installation
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
+# references 1.  https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-7-on-centos-7-via-yum
+# https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-7-on-ubuntu-14-04-via-apt-get
 apt_update 'update_daily' do
   action :periodic
   frequency 3600
@@ -45,18 +47,3 @@ package node['installation']['additionalpackages'] do
 end
 
 log 'installed additionalpackages'
-
-cookbook_file node['applicationserver']['warlocation'] do
-  source 'sm-shop.war'
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
-  notifies :restart, "service[#{tomcat_packageName}]"
-end
-
-log 'copied war file and restarted tomcat'
-
-
-
-
