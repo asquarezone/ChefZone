@@ -14,6 +14,8 @@ log 'apt_update frequency set to 1 hour'
 
 
 tomcat_packageName = node['installation']['applicationserver']
+log "identified package is #{tomcat_packageName}"
+
 # installation of tomcat
 package tomcat_packageName do
   action :install
