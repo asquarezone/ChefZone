@@ -20,7 +20,9 @@ platforms:
   - name: ubuntu-14.
     driver:
       box: ubuntu/trusty64
-  #- name: centos-7.2
+ # - name: centos-6.5
+  #  driver:
+   #   box: nrel/CentOS-6.5-x86_64
 
 suites:
   - name: default

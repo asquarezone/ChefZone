@@ -15,4 +15,5 @@ version '0.1.0'
 # source_url 'https://github.com/<insert_org_here>/webserver' if respond_to?(:source_url)
 
 #dependencies
+depends 'selinux', '~> 0.9.0'
 
