@@ -5,12 +5,20 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 # references 1.  https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-7-on-centos-7-via-yum
 # https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-7-on-ubuntu-14-04-via-apt-get
-apt_update 'update_daily' do
-  action :periodic
-  frequency 3600
+if node['platform_family'] == 'rhel'
+  execute 'update yum' do
+    command 'yum -y update'
+    action :run
+  end
+  log 'updated yum'
+else
+  apt_update 'update_daily' do
+    action :periodic
+    frequency 3600
+  end
+  log 'update frequency set to 1 hour'
 end
 
-log 'apt_update frequency set to 1 hour'
 
 
 tomcat_packageName = node['installation']['applicationserver']
@@ -30,7 +38,7 @@ end
 
 log 'enabled and started tomcat'
 
-#configure users.xml
+# configure users.xml
 
 template node['applicationserver']['usersfile'] do
   source 'tomcat-users.erb'
