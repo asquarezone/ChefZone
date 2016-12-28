@@ -20,4 +20,7 @@ default['applicationserver']['usersfile'] = '/etc/tomcat7/tomcat-users.xml'
 
 default['applicationserver']['warlocation'] = '/var/lib/tomcat7/webapps/sm-shop.war'
 
+default['yum-updatesd']['do_update'] = true
+default['yum-updatesd']['do_download'] = true
+
 
