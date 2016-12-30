@@ -13,7 +13,7 @@ if node['platform_family'] == 'rhel'
   log 'updated yum'
 else
   apt_update 'update_daily' do
-    action :periodic
+    action [:periodic, :update]
     frequency 3600
   end
   log 'update frequency set to 1 hour'

@@ -16,3 +16,4 @@ version '0.1.0'
 
 #dependencies
 depends 'selinux', '~> 0.9.0'
+depends 'java', '= 1.26.0'
