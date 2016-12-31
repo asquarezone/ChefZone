@@ -5,8 +5,8 @@ driver:
     memory: 3000
   #network :
       #-  ["private_network", {ip: "192.168.33.33" }]
-  #synced_folders:
-    #- [".", "/vagrant", "disabled: true"]
+  synced_folders:
+    - [".", "/vagrant", "disabled: true"]
 
 provisioner:
   name: chef_zero
@@ -24,11 +24,16 @@ platforms:
     #  box: ubuntu/trusty64
      # network:
       #  - ["private_network", {ip: "192.168.33.33"}]
-  - name: centos-7.2
-    driver:
-      box: centos/7
-      network:
-        - ["private_network", {ip: "192.168.33.34"}]
+  #- name: centos-7.2
+   # driver:
+      #box: centos/7
+    #  network:
+     #   - ["private_network", {ip: "192.168.33.34"}]
+   - name: ubuntu-16.04
+     driver:
+       box: ubuntu/xenial64
+       network:
+        - ["private_network", {ip: "192.168.33.35"}]
 
 suites:
   - name: default
