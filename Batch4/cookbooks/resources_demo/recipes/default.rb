@@ -12,21 +12,18 @@ service webserver_package do
   action [:enable, :start]
 end
 
-cookbook_file '/var/www/html/index.html' do
+homepage_path = node['webserver']['homepage']['path']
+
+cookbook_file homepage_path do
   source 'index.html'
   owner 'root'
   group 'apache'
   mode '0755'
-  action :create
   notifies :restart, "service[#{webserver_package}]"
-end
-
-file '/etc/motd' do
-  content 'Welcome to Web server managed by chef'
   action :create
-  only_if { ::File.exist?('/etc/motd') }
+  only_if { Homepage.exists? }
 end
 
-
-
-
+motd 'messageoftheday' do
+  action :create
+end
