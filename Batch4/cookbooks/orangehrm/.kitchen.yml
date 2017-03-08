@@ -13,9 +13,9 @@ verifier:
   name: inspec
 
 platforms:
- - name: ubuntu-12.04
+ - name: ubuntu-14.04
    driver:
-     box: hashicorp/precise64
+     box: ubuntu/trusty64
      customize:
        memory: 2048
      network :
