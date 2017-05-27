@@ -9,3 +9,5 @@ unless node['platform_family'] == 'debian' || node['platform_family'] == 'redhat
 end
 
 include_recipe 'configuretomcat::tomcat'
+include_recipe 'configuretomcat::configure-tomcat'
+include_recipe 'configuretomcat::deploy_app'

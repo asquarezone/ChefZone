@@ -17,7 +17,9 @@ verifier:
 platforms:
   - name: ubuntu
     driver:
-      box: ubuntu/trusty64
+      box:  bento/ubuntu-14.04 
+      network:
+      - ["private_network", {ip: "192.168.33.34"}]
   #- name: centos-7.3
 
 suites:
