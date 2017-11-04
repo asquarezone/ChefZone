@@ -1,0 +1,1 @@
+default['bc']['packages'] = [ "git", "tree", "wget"]

@@ -1,0 +1,27 @@
+---
+driver:
+  name: ec2
+  instance_type: t2.micro
+  region: us-west-2
+  aws_ssh_key_id: chefclassroom
+
+
+  transport:
+    username: ec2-user
+    ssh_key: $HOME/.ssh/chefclassroom.pem
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  #- name: ubuntu-14.04
+  #- name: centos-7.2
+  - name: rhel7
+    driver:
+      image_id: ami-775e4f16
+
+suites:
+  - name: default
+    run_list:
+      - recipe[testaws::default]
+    attributes:
