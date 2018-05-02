@@ -6,7 +6,7 @@
 
 # download nvm script file to a location
 script_location = node['appserver']['nvm']['scriptlocation']
-
+current_user = node['appserver']['user']
 nvm_directory = node['appserver']['nvm']['home']
 
 remote_file script_location do
