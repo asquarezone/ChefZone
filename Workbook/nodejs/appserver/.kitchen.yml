@@ -1,0 +1,30 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: kitchen
+  region: us-west-2
+  security_group_ids: ["sg-03b9ed660da7f5d26"]
+  availability_zone: a
+  require_chef_omnibus: true
+  instance_type: t2.micro
+  associate_public_ip: true
+  shared_credentials_profile: kitchen
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-16.04
+    driver:
+      image_id: ami-4e79ed36
+    transport:
+        ssh_key: C:\Users\ks956797\.ec2\kitchen.pem
+        username: ubuntu
+  #- name: centos-7.2
+
+suites:
+  - name: default
+    run_list:
+      - recipe[appserver::default]
+      - recipe[appserver::nvm]
+    attributes:
