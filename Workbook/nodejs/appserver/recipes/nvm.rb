@@ -31,4 +31,5 @@ reboot 'app_requires_reboot' do
   action :nothing
   retries 3
   retry_delay 60
+  ignore_failure true
 end
