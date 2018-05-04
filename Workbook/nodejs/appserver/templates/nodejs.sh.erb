@@ -1,0 +1,9 @@
+#!/bin/sh
+export NVM_ENV_SH=<%="#{node['appserver']['nvm']['home']}/nvm.sh"%>
+#error on anything
+set -e
+
+. ${NVM_ENV_SH}
+source ${NVM_ENV_SH}
+. ~/.bashrc
+nvm install <%="#{node['appserver']['nodejs']['version']}"%>
