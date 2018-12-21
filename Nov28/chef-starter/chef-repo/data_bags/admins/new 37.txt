@@ -1,0 +1,16 @@
+SAAS
+Market Place
+DBA
+
+Oracle, DB2, Teradata, informatica, SAP HANA
+
+PAAS
+
+Azure SQL
+
+SQL SERVER, POSTGRES, mySQL
+
+1. Create
+2. Backups
+3. Replications (Geo Replications)
+4. Performance Analyzer & SUggestions 

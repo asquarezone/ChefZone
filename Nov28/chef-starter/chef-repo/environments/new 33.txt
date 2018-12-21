@@ -1,0 +1,30 @@
+Databases:
+
+1) PAAS  (RDS)
+  => Need not care about underlying os => AWS
+  => DBMS
+  
+  mysql with 5.7
+  
+  mysql, maria db, aurora mysql, postgres, aurora postgres, oracle
+   sql server
+   
+   specific dbms & specific versions
+   
+   instances & storage
+	
+	backups (7)
+	
+	minor upgrades  
+	
+	Replications:
+	   just easy
+	
+	High Avaialbility
+	
+	db.t2.micro
+	
+	
+2) SAAS:
+
+oracle 

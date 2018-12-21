@@ -1,0 +1,14 @@
+Chef Supermarket
+ => Cookbooks 
+      which you can user rather than developing on your own
+	  
+	  => runList
+	  => custom resources
+	  
+	  
+	  java_install 'myjanav' do
+	    version 8
+		action :install
+	  end
+	  
+	  A  => B => C  => D

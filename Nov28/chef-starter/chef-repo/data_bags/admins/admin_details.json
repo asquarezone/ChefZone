@@ -1,0 +1,10 @@
+{
+  "id": "admin_details",
+  "password": {
+    "encrypted_data": "mrvKu3uC+Zcjfdc0FKmegPsD3/uQImJzJdE69Q==\n",
+    "iv": "aCtL3Vk8xjIN1wsz\n",
+    "auth_tag": "m0SGuj0r3iw9aAN2Yq5zGw==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  }
+}
