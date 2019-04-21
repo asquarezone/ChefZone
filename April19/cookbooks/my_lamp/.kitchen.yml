@@ -1,0 +1,44 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: chefws # key pair name
+  region: us-west-2 # region code of aws
+  availability_zone: us-west-2b # availability_zone of us-west
+  subnet_id: subnet-89fb32ee # subnet-id noted from above steps
+  instance_type: t2.micro
+  security_group_ids: ["sg-0b4fae16e43e8ecc5"]
+
+provisioner:
+  name: chef_zero
+  # You may wish to disable always updating cookbooks in CI or other testing environments.
+  # For example:
+  #   always_update_cookbooks: <%= !ENV['CI'] %>
+  always_update_cookbooks: true
+
+transport:
+  ssh_key: ./chefws.pem # relative path to pem file
+  connection_timeout: 10
+  connection_retries: 5
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+    driver:
+      image_id: ami-08692d171e3cf02d6
+    transport:
+      username: ubuntu
+  - name: redhat-7
+    driver:
+      image_id: ami-08692d171e3cf02d6 # change this to your ami
+    transport:
+      username: ec2-user
+suites:
+  - name: default
+    run_list:
+      - recipe[my_lamp::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:

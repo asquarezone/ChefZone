@@ -1,0 +1,35 @@
+---
+driver:
+  name: azurerm
+  subscription_id: "58376b06-f20d-4a7a-a75d-cbd03b2135a6"
+  location: "Central Us"
+  machine_size: 'Standard_B1s'
+
+provisioner:
+  name: chef_zero
+  # You may wish to disable always updating cookbooks in CI or other testing environments.
+  # For example:
+  #   always_update_cookbooks: <%= !ENV['CI'] %>
+  always_update_cookbooks: true
+
+verifier:
+  name: inspec
+
+platforms:
+- name: ubuntu-14.04
+  driver:
+    image_urn: Canonical:UbuntuServer:14.04.4-LTS:latest
+    vm_name: trusty-vm
+    vm_tags:
+        ostype: linux
+        distro: ubuntu
+
+suites:
+  - name: default
+    run_list:
+      - recipe[my_apache::apache]
+      - recipe[my_apache::php]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
