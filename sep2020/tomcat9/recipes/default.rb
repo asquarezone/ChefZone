@@ -6,4 +6,5 @@
 
 if platform?('ubuntu')
     include_recipe 'tomcat_flavor2::ubuntu'
+    include_recipe 'tomcat_flavor2::deploy'
 end

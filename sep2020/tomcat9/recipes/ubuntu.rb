@@ -12,6 +12,11 @@ apt_update 'update packages' do
     action :update
 end
 
+package java_package do
+    action :install
+end
+
+
 # installing tomcat
 tomcat_package = node['tomcat_flavor2']['tomcat_package']
 

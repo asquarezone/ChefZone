@@ -3,26 +3,34 @@
 # The InSpec reference, with examples and extensive documentation, can be
 # found at https://www.inspec.io/docs/reference/resources/
 
-#unless os.windows?
-  # This is an example test, replace with your own test.
-#  describe user('root'), :skip do
-##    it { should exist }
-#  end
-#end
-
-# This is an example test, replace it with your own test.
-#describe port(80), :skip do
-#  it { should_not be_listening }
-#end
-
-# This is an example test, replace it with your own test.
-describe port(8080) do
-  it { should be_listening }
+# Verifying java installation
+describe package('openjdk-11-jdk') do
+  it { should be_installed }
 end
 
+# verifying tomcat installation
+describe package('tomcat9') do
+  it { should be_installed }
+end
+
+# verify if the tomcat9 service is installed,enable and running
+
+describe service('tomcat9') do
+  it { should be_installed }
+  it { should be_enabled }
+  it { should be_running }
+end
+
+# verify if the tomcat-users.xml file exists 
+
 describe file('/etc/tomcat9/tomcat-users.xml') do
-  it { should be_file }
-  
+  it { should exist }
+end
+
+# verify if 8080 port is listening
+
+describe port(8080) do
+  it { should be_listening }
 end
 
 
