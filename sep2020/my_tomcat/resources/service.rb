@@ -20,17 +20,17 @@ action :install do
     group_name = new_resource.groupname
 
     group group_name do
-    action :create
+        action :create
     end
 
     username = new_resource.groupname
 
     user username do
-    comment 'This is tomcat user'
-    gid group_name
-    home new_resource.tomcat_folder
-    shell '/bin/false'
-    action :create
+        comment 'This is tomcat user'
+        gid group_name
+        home new_resource.tomcat_folder
+        shell '/bin/false'
+        action :create
     end
 
     # Step 3 Installing tomcat
