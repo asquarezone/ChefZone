@@ -19,6 +19,6 @@ end
 
 service tomcat_package do
     action :start
-ends
+end
 
 
