@@ -1,6 +1,12 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  aws_ssh_key_id: testkitchen
+  instance_type: t2.micro
+  security_group_ids: ["sg-0926fc031b2a6b92c"]
+  availability_zone: us-west-2b
+  subnet_id: subnet-80ed0eca
+  region: us-west-2
 
 ## The forwarded_port port feature lets you connect to ports on the VM guest via
 ## localhost on the host.
@@ -24,9 +30,22 @@ provisioner:
 verifier:
   name: inspec
 
+transport:
+  ssh_key: ./testkitchen.pem
+  connection_timeout: 10
+  connection_retries: 5
+  
 platforms:
   - name: ubuntu-18.04
+    driver:
+      image_id: ami-0ac73f33a1888c64a
+    transport:
+      username: ubuntu
   - name: centos-7
+    driver:
+      image_id: ami-000d6375f955d3d80
+    transport:
+      username: centos
 
 suites:
   - name: default
