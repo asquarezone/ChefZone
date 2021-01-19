@@ -1,0 +1,51 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: cheflearning
+  region: us-west-2
+  availability_zone: us-west-2b
+  subnet_id: subnet-80ed0eca
+  instance_type: t2.micro
+  image_id: ami-0ac73f33a1888c64a
+  security_group_ids: ["sg-0926fc031b2a6b92c"]
+
+## The forwarded_port port feature lets you connect to ports on the VM guest via
+## localhost on the host.
+## see also: https://www.vagrantup.com/docs/networking/forwarded_ports.html
+
+#  network:
+#    - ["forwarded_port", {guest: 80, host: 8080}]
+
+provisioner:
+  name: chef_zero
+  # You may wish to disable always updating cookbooks in CI or other testing environments.
+  # For example:
+  #   always_update_cookbooks: <%= !ENV['CI'] %>
+  always_update_cookbooks: true
+
+  ## product_name and product_version specifies a specific Chef product and version to install.
+  ## see the Chef documentation for more details: https://docs.chef.io/config_yml_kitchen.html
+  #  product_name: chef
+  #  product_version: 15
+
+verifier:
+  name: inspec
+
+transport:
+  ssh_key: ./cheflearning.pem
+  connection_timeout: 10
+  connection_retries: 5
+  username: ubuntu
+
+platforms:
+  - name: ubuntu-18.04
+  #- name: centos-7
+
+suites:
+  - name: default
+    run_list:
+      - recipe[mylamp::default]
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    attributes:
