@@ -36,12 +36,13 @@ apt_package 'php-cli' do
     action :install
 end
 
+service 'apache2' do
+    action :restart
+end
 
-
-
-
-
-
-
+file '/var/www/html/info.php' do
+    content '<?php phpinfo(); ?>'
+    action :create
+end
 
 
