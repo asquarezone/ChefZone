@@ -19,4 +19,29 @@ apt_package 'apache2' do
     action :install
 end
 
+# sudo apt install php libapache2-mod-php php-mysql php-cli -y
+apt_package 'php' do
+    action :install
+end
+
+apt_package 'libapache2-mod-php' do
+    action :install
+end
+
+apt_package 'php-mysql' do
+    action :install
+end
+
+apt_package 'php-cli' do
+    action :install
+end
+
+
+
+
+
+
+
+
+
 
