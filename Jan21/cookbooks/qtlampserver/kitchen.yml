@@ -38,13 +38,17 @@ transport:
   username: ubuntu
 
 platforms:
-  - name: ubuntu-18.04
-  #- name: centos-7
+  #- name: ubuntu-18.04
+  - name: centos-7
+    driver:
+      image_id: 'ami-0bc06212a56393ee1'
+    transport:
+      username: centos
 
 suites:
   - name: default
     run_list:
-      - recipe[qtlampserver::lamp_ubuntu]
+      - recipe[qtlampserver::lamp_centos]
     verifier:
       inspec_tests:
         - test/integration/default
