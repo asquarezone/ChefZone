@@ -11,3 +11,5 @@ end
 if node['platform'] == 'ubuntu'
     include_recipe 'qtlampserver::lamp_ubuntu'
 end
+
+include_recipe 'qtlampserver::phppage'

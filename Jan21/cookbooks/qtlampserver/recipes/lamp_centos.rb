@@ -27,15 +27,3 @@ end
 yum_package 'php-fpm' do
     action :install
 end
-
-
-file '/var/www/html/info.php' do
-    content '<?php phpinfo(); ?>'
-    action :create
-end
-
-
-
-
-
-
