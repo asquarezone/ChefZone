@@ -15,15 +15,10 @@ service 'httpd' do
 end
 
 # Install php php-mysql php-fpm
+php_packages = %w(php php-mysql php-fpm)
 
-package 'php' do
-    action :install
-end
-
-package 'php-mysql' do
-    action :install
-end
-
-package 'php-fpm' do
-    action :install
+php_packages.each do |php_package|
+    package php_package do
+        action :install
+    end
 end

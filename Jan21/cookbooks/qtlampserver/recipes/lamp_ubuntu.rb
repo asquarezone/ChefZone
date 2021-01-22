@@ -20,22 +20,14 @@ package 'apache2' do
 end
 
 # sudo apt install php libapache2-mod-php php-mysql php-cli -y
-package 'php' do
-    action :install
-end
+php_packages = %w(php libapache2-mod-php php-mysql php-cli)
 
-package 'libapache2-mod-php' do
-    action :install
-end
-
-package 'php-mysql' do
-    action :install
-end
-
-package 'php-cli' do
-    action :install
+php_packages.each do |php_package|
+    package php_package do
+        action :install
+    end
 end
 
 service 'apache2' do
-    action :restart
+    action :start
 end
