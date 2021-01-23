@@ -32,8 +32,9 @@ service package_name do
     action :enable
 end
 
-file '/var/www/html/info.php' do
-    content '<?php phpinfo(); ?>'
+cookbook_file '/var/www/html/info.php' do
+    source 'info.php'
     action :create
     notifies :restart, "service[#{package_name}]"
 end
+
