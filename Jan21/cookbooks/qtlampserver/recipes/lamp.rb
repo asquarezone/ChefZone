@@ -14,7 +14,7 @@ if node['platform'] == 'ubuntu'
     end
 end    
     
-if node['platform'] != 'ubuntu' || node['platform'] != 'centos'
+if node['platform'] != 'ubuntu' && node['platform'] != 'centos'
     raise 'this cookbook is developed only for centos and ubuntu'
 end
 
