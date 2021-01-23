@@ -4,21 +4,17 @@
 #
 # Copyright:: 2021, The Authors, All Rights Reserved.
 
-package_name = nil
-php_packages = nil
+package_name = node['qtlampserver']['packagename']
+php_packages = node['qtlampserver']['phppackages']
+
 if node['platform'] == 'ubuntu'
     apt_update 'update ubuntu packages' do
         ignore_failure true
         action :update
     end
-    package_name = 'apache2'
-    php_packages = %w(php libapache2-mod-php php-mysql php-cli)
+end    
     
-elsif node['platform'] == 'centos'
-    package_name = 'httpd'
-    php_packages = %w(php php-mysql php-fpm) 
-
-else
+if node['platform'] != 'ubuntu' || node['platform'] != 'centos'
     raise 'this cookbook is developed only for centos and ubuntu'
 end
 
