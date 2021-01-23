@@ -1,0 +1,5 @@
+default['qttomcatserver']['java_package'] = 'openjdk-8-jdk'
+default['qttomcatserver']['groupname'] = 'tomcat'
+default['qttomcatserver']['username'] = 'tomcat' 
+default['qttomcatserver']['shell'] = '/bin/false'
+default['qttomcatserver']['homedir'] = '/opt/tomcat'
