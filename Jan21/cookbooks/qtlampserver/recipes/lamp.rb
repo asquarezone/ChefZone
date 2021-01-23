@@ -19,6 +19,7 @@ end
 
 package package_name do
     action :install
+    notifies :restart, "service[#{package_name}]"
 end
 
 php_packages.each do |php_package|
@@ -28,5 +29,11 @@ php_packages.each do |php_package|
 end
 
 service package_name do
-    action :restart
+    action :enable
+end
+
+file '/var/www/html/info.php' do
+    content '<?php phpinfo(); ?>'
+    action :create
+    notifies :restart, "service[#{package_name}]"
 end
