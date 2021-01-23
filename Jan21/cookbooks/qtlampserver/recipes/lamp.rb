@@ -7,15 +7,14 @@
 package_name = node['qtlampserver']['packagename']
 php_packages = node['qtlampserver']['phppackages']
 
-if node['platform'] == 'ubuntu'
-    apt_update 'update ubuntu packages' do
-        ignore_failure true
-        action :update
-    end
-end    
+apt_update 'update ubuntu packages' do
+    ignore_failure true
+    action :update
+    only_if { node['platform'] == 'ubuntu' }
+end   
     
 if node['platform'] != 'ubuntu' && node['platform'] != 'centos'
-    raise 'this cookbook is developed only for centos and ubuntu'
+    raise 'this cookbook is developed only for centos and ubuntu' 
 end
 
 package package_name do
