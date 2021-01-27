@@ -8,3 +8,6 @@ default['qttomcatserver']['tomcat_download_location'] = "/tmp/apache-tomcat-9.0.
 default['qttomcatserver']['tomcat_location'] = '/opt/tomcat'
 default['qttomcatserver']['java_home'] = '/usr/lib/jvm/java-1.8.0-openjdk-amd64'
 default['qttomcatserver']['catalina_opts']='-Xms256M -Xmx512M -server -XX:+UseParallelGC'
+default['qttomcatserver']['webusername'] = 'admin'
+default['qttomcatserver']['webpassword'] = 'password'
+default['qttomcatserver']['roles'] = 'manager-gui,admin-gui'

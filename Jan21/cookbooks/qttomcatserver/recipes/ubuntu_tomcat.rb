@@ -94,6 +94,32 @@ service 'tomcat' do
     action :enable
 end
 
+template '/opt/tomcat/conf/tomcat-users.xml' do
+    source 'tomcat-users.xml.erb'
+    owner user_name
+    group groupname
+    mode '0755'
+    action :create
+    notifies :restart, 'service[tomcat]', :immediate
+end
+
+context_paths = ['/opt/tomcat/webapps/manager/META-INF/context.xml', '/opt/tomcat/webapps/host-manager/META-INF/context.xml']
+
+context_paths.each do |context_path|
+    cookbook_file context_path do
+        source 'context.xml'
+        owner user_name
+        group groupname
+        mode '0755'
+        action :create
+        notifies :restart, 'service[tomcat]'
+    end
+end
+
+
+
+
+
 
 
 
