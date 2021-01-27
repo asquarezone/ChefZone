@@ -81,6 +81,19 @@ execute 'recursive give ownership' do
     subscribes :run, 'execute[untartomcat]', :immediate
 end
 
+template '/etc/systemd/system/tomcat.service' do
+    source 'tomcat.service.erb'
+    owner user_name
+    group groupname
+    mode '0755'
+    action :create
+    notifies :restart, 'service[tomcat]', :immediate
+end
+
+service 'tomcat' do
+    action :enable
+end
+
 
 
 

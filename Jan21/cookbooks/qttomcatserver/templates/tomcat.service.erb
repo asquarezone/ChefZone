@@ -1,0 +1,25 @@
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+
+Environment=JAVA_HOME=<%= node['qttomcatserver']['java_home'] %>
+Environment=CATALINA_PID=<%= node['qttomcatserver']['homedir'] %>/temp/tomcat.pid
+Environment=CATALINA_HOME=<%= node['qttomcatserver']['homedir'] %>
+Environment=CATALINA_BASE=<%= node['qttomcatserver']['homedir'] %>
+Environment='CATALINA_OPTS= <%= node['qttomcatserver']['catalina_opts'] %>'
+Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+User=<%= node['qttomcatserver']['username'] %>
+Group=<%= node['qttomcatserver']['groupname'] %>
+UMask=0007
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
