@@ -5,14 +5,8 @@
 # Copyright:: 2021, The Authors, All Rights Reserved.
 
 # sudo apt-get update
-apt_update 'update ubuntu packages' do
-  ignore_failure true
-  action :update
-end
-
-java_package = node['qttomcatserver']['java_package']
-package java_package do
-  action :install
+qttomcatserver_qttomcat 'install java' do
+  action :installjava
 end
 
 # variables from attributes
@@ -108,11 +102,11 @@ context_paths = ['/opt/tomcat/webapps/manager/META-INF/context.xml', '/opt/tomca
 context_paths.each do |context_path|
   cookbook_file context_path do
     source 'context.xml'
-    owner user_name
-    group groupname
-    mode '0755'
-    action :create
-    notifies :restart, 'service[tomcat]'
+      owner user_name
+      group groupname
+      mode '0755'
+      action :create
+      notifies :restart, 'service[tomcat]'
   end
 end
 
