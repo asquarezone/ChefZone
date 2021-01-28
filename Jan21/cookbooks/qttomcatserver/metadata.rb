@@ -1,9 +1,8 @@
 name 'qttomcatserver'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'shaik khaja ibrahim'
+maintainer_email 'qtdevops@gmail.com'
 license 'All Rights Reserved'
 description 'Installs/Configures qttomcatserver'
-long_description 'Installs/Configures qttomcatserver'
 version '0.1.0'
 chef_version '>= 14.0'
 

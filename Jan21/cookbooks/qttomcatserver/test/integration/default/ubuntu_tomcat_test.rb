@@ -20,7 +20,6 @@ describe file('/opt/tomcat') do
   it { should exist }
 end
 
-
 describe file('/tmp/apache-tomcat-9.0.41.tar.gz') do
   it { should exist }
 end
