@@ -1,0 +1,1 @@
+default['ltutils']['utilpackages'] = [ 'git', 'tree']

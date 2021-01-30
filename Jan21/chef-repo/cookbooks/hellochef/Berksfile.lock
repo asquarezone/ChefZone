@@ -1,7 +1,0 @@
-DEPENDENCIES
-  hellochef
-    path: .
-    metadata: true
-
-GRAPH
-  hellochef (0.1.0)
