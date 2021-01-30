@@ -12,3 +12,16 @@ utilpackages.each do |utilpackage|
     end
     
 end
+
+secret = data_bag_item('tomcat', 'tomcatusers', 'learningthoughts')
+username = secret['username']
+password = secret['password']
+
+log username do
+    level :info
+end
+
+log password do
+    level :info
+end
+

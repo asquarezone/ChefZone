@@ -1,5 +1,17 @@
 {
- "id": "tomcatusers",
- "username": "tomcat",
- "password": "tomcat"
+  "id": "tomcatusers",
+  "username": {
+    "encrypted_data": "zmSmYrcUnA6xHteEJ8DlllFlKYnme+jQtQ==\n",
+    "iv": "aFjqR5Mvyv1e55XU\n",
+    "auth_tag": "y+TuC2VkacKE2ajTzIuFxQ==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  },
+  "password": {
+    "encrypted_data": "HU0RYGDgCsrcbJgyAzM7Zvn5S5whCyb5iQ==\n",
+    "iv": "s+oi1JCUSFbBbKE8\n",
+    "auth_tag": "pH8cTkoVklA7hbJqZWI43A==\n",
+    "version": 3,
+    "cipher": "aes-256-gcm"
+  }
 }
