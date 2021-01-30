@@ -4,7 +4,7 @@ maintainer_email 'qtdevops@gmail.com'
 license 'All Rights Reserved'
 description 'Installs/Configures lttomcat'
 long_description 'Installs/Configures lttomcat'
-version '1.0.0'
+version '1.1.0'
 chef_version '>= 14.0'
 
 # The `issues_url` points to the location where issues for this cookbook are

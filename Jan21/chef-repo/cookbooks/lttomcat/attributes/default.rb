@@ -1,1 +1,1 @@
-default['lttomcat']['java_version']= '8'
+default['lttomcat']['java_version']= '11'
