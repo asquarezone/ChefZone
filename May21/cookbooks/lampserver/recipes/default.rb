@@ -45,6 +45,9 @@ file '/var/www/html/info.php' do
 end
 
 
+package 'tree' do
+    action :install
+end
 
 
 

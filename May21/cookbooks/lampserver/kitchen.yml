@@ -1,6 +1,12 @@
 ---
 driver:
-  name: vagrant
+  name: ec2
+  aws_ssh_key_id: cheflearning
+  region: us-west-2
+  availability_zone: us-west-2a
+  subnet_id: "subnet-295df863"
+  instance_type: t2.micro
+  security_group_ids: ["sg-0097a1ae1f70202f0"]
 
 ## The forwarded_port port feature lets you connect to ports on the VM guest via
 ## localhost on the host.
@@ -24,9 +30,17 @@ provisioner:
 verifier:
   name: inspec
 
+transport:
+  ssh_key: ./cheflearning.pem
+  connection_timeout: 10
+  connection_retries: 5
+  username: ubuntu
+
 platforms:
-  - name: ubuntu-20.04
-  - name: centos-8
+  - name: ubuntu-18.04
+    driver:
+      image_id: ami-090717c950a5c34d3
+  #- name: centos-8
 
 suites:
   - name: default
