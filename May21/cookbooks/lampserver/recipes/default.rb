@@ -20,22 +20,14 @@ package 'apache2' do
 end
 
 # sudo apt install php libapache2-mod-php php-mysql php-cli -y
+php_packages = %w(php libapache2-mod-php php-mysql php-cli)
 
-package 'php' do
-    action :install
+php_packages.each do |php_package|
+    package php_package do
+        action :install
+    end
 end
 
-package 'libapache2-mod-php' do
-    action :install
-end
-
-package 'php-mysql' do
-    action :install
-end
-
-package 'php-cli' do
-    action :install
-end
 
 # echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php
 
@@ -43,12 +35,3 @@ file '/var/www/html/info.php' do
     content '<?php phpinfo(); ?>'
     action :create
 end
-
-
-package 'tree' do
-    action :install
-end
-
-
-
-
