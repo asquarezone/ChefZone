@@ -5,4 +5,6 @@
 # Copyright:: 2021, The Authors, All Rights Reserved.
 # recipe => lampserver::default => lampserver
 
-include_recipe 'lampserver::lamp'
+if node['platform'] == 'ubuntu'
+    include_recipe 'lampserver::lamp'
+end
