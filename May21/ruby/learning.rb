@@ -23,3 +23,18 @@ courses = %w(DevOps AWS Azure)
 courses.each do |course|
     puts(course)
 end
+
+# hash
+# it is list of keys and values
+qt = {
+    'name' => 'QualityThought',
+    'courses' => %w(DevOps AWS Azure),
+    'address' => {
+        'building' => '209, Nilgiri Block',
+        'landmark' => 'ameerpet metro',
+        'city' => 'hyderabad'
+    },
+}
+
+puts(qt['name'])
+puts(qt['address']['landmark'])
