@@ -7,4 +7,6 @@
 
 if node['platform'] == 'ubuntu'
     include_recipe 'lampserver::lamp'
+else
+    raise 'This cookbook is supporting only ubuntu distributions'
 end
