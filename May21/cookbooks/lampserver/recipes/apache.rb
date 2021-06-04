@@ -10,16 +10,8 @@ apt_update 'update ubuntu packages' do
     only_if { node['platform'] == 'ubuntu' }
 end
 
-apache_package = ""
-php_packages = []
-
-if node['platform'] == 'ubuntu'
-    apache_package = "apache2"
-    php_packages = %w(php libapache2-mod-php php-mysql php-cli)
-elsif node['platform'] == "redhat"
-    apache_package = "httpd"
-    php_packages = %w(php php-mysqlnd php-mbstring php-opcache php-gd)
-end
+apache_package = node['lampserver']['apache_package']
+php_packages = node['lampserver']['php_packages']
 
 package apache_package do
     action :install
