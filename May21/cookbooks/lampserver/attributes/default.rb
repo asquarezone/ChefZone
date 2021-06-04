@@ -1,6 +1,6 @@
 # best practice to create an attribute is use cookbookname and purpose of attribute
 
-if node['platform '] == 'ubuntu'
+if node['platform'] == 'ubuntu'
     default['lampserver']['apache_package'] = 'apache2'
     default['lampserver']['php_packages'] = %w(php libapache2-mod-php php-mysql php-cli)
 elsif node['platform'] == 'redhat'
