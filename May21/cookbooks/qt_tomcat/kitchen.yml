@@ -50,8 +50,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[qt_tomcat::install_java]
-      - recipe[qt_tomcat::configure]
+      - recipe[qt_tomcat::default]
     verifier:
       inspec_tests:
         - test/integration/default

@@ -20,3 +20,6 @@ default['qt_tomcat']['tomcat_download_url'] = 'https://mirrors.estointernet.in/a
 default['qt_tomcat']['tomcat_service_file'] = '/etc/systemd/system/tomcat.service'
 default['qt_tomcat']['tomcat_download_temp_location'] = '/tmp/apache-tomcat-9.0.46.tar.gz'
 
+#warfile url
+default['qt_tomcat']['warfile_url'] = 'https://referenceapplicationskhaja.s3-us-west-2.amazonaws.com/gameoflife.war'
+default['qt_tomcat']['warfile_destination'] = '/opt/tomcat/webapps/gameoflife.war'
