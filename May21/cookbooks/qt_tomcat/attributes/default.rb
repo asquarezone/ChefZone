@@ -1,5 +1,13 @@
 # attributes for openjdk package
-default['qt_tomcat']['java_package'] = 'openjdk-8-jdk'
+if node['platform'] == 'ubuntu'
+    default['qt_tomcat']['java_package'] = 'openjdk-8-jdk'
+    default['qt_tomcat']['JAVA_HOME'] = '/usr/lib/jvm/java-1.8.0-openjdk-amd64'
+elsif node['platform'] == 'redhat'
+    default['qt_tomcat']['java_package'] = "java-1.8.0-openjdk"
+    default['qt_tomcat']['JAVA_HOME'] = '/usr/lib/jvm/jre'
+end
+
+
 
 # attributes for username and groupname
 default['qt_tomcat']['username'] = 'tomcat'

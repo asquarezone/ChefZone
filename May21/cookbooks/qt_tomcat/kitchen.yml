@@ -40,11 +40,11 @@ platforms:
   - name: ubuntu-18.04
     driver:
       image_id: ami-090717c950a5c34d3
-  #- name: redhat-8
-  #  driver:
-  #    image_id: ami-0b28dfc7adc325ef4
-  #  transport:
-  #    username: ec2-user
+  - name: redhat-8
+    driver:
+      image_id: ami-0b28dfc7adc325ef4
+    transport:
+      username: ec2-user
   
 
 suites:
