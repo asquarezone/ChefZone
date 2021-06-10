@@ -17,3 +17,6 @@ chef_version '>= 15.0'
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/qt_nopcommerce'
+depends 'mysql', '~> 10.1.3'
+
+supports 'ubuntu', '>= 18.04'
