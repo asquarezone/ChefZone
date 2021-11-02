@@ -9,19 +9,19 @@ apt_update 'update ubuntu packages' do
     action :update
 end
 
-apt_package 'apache2' do
+package 'apache2' do
     action :install
 end
 
-apt_package 'php' do
+package 'php' do
     action :install
 end
 
-apt_package 'libapache2-mod-php' do
+package 'libapache2-mod-php' do
     action :install
 end
 
-apt_package 'php-mysql' do
+package 'php-mysql' do
     action :install
 end
 
