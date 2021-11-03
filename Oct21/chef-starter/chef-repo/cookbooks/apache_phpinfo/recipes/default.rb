@@ -10,7 +10,7 @@ apt_update 'update ubuntu packages' do
 end
 
 package 'install lamp packages' do
-  package_name ['apache2', 'php', 'libapache2-mod-php', 'php-mysql']
+  package_name %w(apache2 php libapache2-mod-php php-mysql)
   action :install
 end
 
