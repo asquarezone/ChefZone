@@ -38,7 +38,12 @@ verifier:
 
 platforms:
   - name: ubuntu-20.04
-  #- name: centos-8
+  - name: centos-7
+    driver:
+      image_id: ami-0bc06212a56393ee1
+    transport:
+      username: centos
+      ssh_key: chefnode.pem
 
 suites:
   - name: default
