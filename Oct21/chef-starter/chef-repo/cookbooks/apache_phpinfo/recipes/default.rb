@@ -3,45 +3,37 @@
 # Recipe:: default
 #
 # Copyright:: 2021, The Authors, All Rights Reserved.
+apache_package = 'apache2'
+all_packages = %w(apache2 php libapache2-mod-php php-mysql)
+info_page_path = '/var/www/html/info.php'
+
+if node['platform'] == 'centos'
+  apache_package = 'httpd'
+  all_packages = %w(httpd php php-mysql php-fpm)
+end
+
 if node['platform'] == 'ubuntu'
   apt_update 'update ubuntu packages' do
     ignore_failure true
     action :update
   end
-
-  package 'install lamp packages' do
-    package_name %w(apache2 php libapache2-mod-php php-mysql)
-    action :install
-  end
-
-  file '/var/www/html/info.php' do
-    content '<?php phpinfo(); ?>'
-    action :create
-  end
-
-  service 'apache2' do
-    action :restart
-  end
-elsif node['platform'] == 'centos'
-
-  package 'install lamp packages on centos' do
-    package_name %w(httpd php php-mysql php-fpm)
-    action :install
-  end
-
-  file 'infopage' do
-    path '/var/www/html/info.php'
-    content '<?php phpinfo(); ?>'
-    action :create
-  end
-
-  service 'httpd' do
-    action :enable
-  end
-
-  service 'httpd for centos' do
-    service_name  'httpd'
-    action :start
-  end
-  
 end
+
+package all_packages do
+  action :install
+end
+
+file info_page_path do
+  content '<?php phpinfo(); ?>'
+  action :create
+end
+
+service 'enable apache' do
+  service_name apache_package
+  action :enable
+end
+
+service apache_package do
+  action :restart
+end
+
