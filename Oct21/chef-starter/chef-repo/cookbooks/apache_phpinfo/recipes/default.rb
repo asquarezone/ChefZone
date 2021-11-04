@@ -22,4 +22,26 @@ if node['platform'] == 'ubuntu'
   service 'apache2' do
     action :restart
   end
+elsif node['platform'] == 'centos'
+
+  package 'install lamp packages on centos' do
+    package_name %w(httpd php php-mysql php-fpm)
+    action :install
+  end
+
+  file 'infopage' do
+    path '/var/www/html/info.php'
+    content '<?php phpinfo(); ?>'
+    action :create
+  end
+
+  service 'httpd' do
+    action :enable
+  end
+
+  service 'httpd for centos' do
+    service_name  'httpd'
+    action :start
+  end
+  
 end
