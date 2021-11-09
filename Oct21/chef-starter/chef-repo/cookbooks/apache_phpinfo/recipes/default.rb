@@ -15,18 +15,16 @@ end
 
 package all_packages do
   action :install
+  notifies :enable, 'service[enable_apache]', :immediate
 end
 
 file info_page_path do
   content '<?php phpinfo(); ?>'
   action :create
+  notifies :restart, 'service[enable_apache]', :immediate
 end
 
-service 'enable apache' do
+service 'enable_apache' do
   service_name apache_package
-  action :enable
-end
-
-service apache_package do
-  action :restart
+  action :nothing
 end
