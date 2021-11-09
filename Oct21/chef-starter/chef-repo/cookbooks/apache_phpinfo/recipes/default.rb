@@ -7,11 +7,10 @@ apache_package = node['apache_phpinfo']['apache_package']
 all_packages = node['apache_phpinfo']['all_packages']
 info_page_path = node['apache_phpinfo']['info_page_path']
 
-if platform?('ubuntu')
-  apt_update 'update ubuntu packages' do
-    ignore_failure true
-    action :update
-  end
+apt_update 'update ubuntu packages' do
+  ignore_failure true
+  action :update
+  only_if { platform?('ubuntu') }
 end
 
 package all_packages do
