@@ -7,7 +7,7 @@ apache_package = node['apache_phpinfo']['apache_package']
 all_packages = node['apache_phpinfo']['all_packages']
 info_page_path = node['apache_phpinfo']['info_page_path']
 
-if node['platform'] == 'ubuntu'
+if platform?('ubuntu')
   apt_update 'update ubuntu packages' do
     ignore_failure true
     action :update
