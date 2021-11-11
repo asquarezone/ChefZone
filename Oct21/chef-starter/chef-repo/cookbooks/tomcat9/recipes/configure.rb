@@ -27,3 +27,20 @@ archive_file 'tomcat' do
   destination user_home
   action :extract
 end
+
+# create a symbolic link
+link node['tomcat9']['extracted_tomcat'] do
+  to node['tomcat9']['tomcatdir']
+end
+
+user_name = node['tomcat9']['username']
+group_name = node['tomcat9']['groupname']
+
+# change ownership of /opt/tomcat
+directory user_home do
+  owner user_name
+  group group_name
+  recursive true
+  action :create
+end
+
