@@ -26,21 +26,28 @@ archive_file 'tomcat' do
   path local_download_path
   destination user_home
   action :extract
+  notifies :run, 'execute[createlink]', :immediately
 end
 
 # create a symbolic link
-link node['tomcat9']['extracted_tomcat'] do
-  to node['tomcat9']['tomcatdir']
+
+execute 'createlink' do
+  command "sudo ln -s #{node['tomcat9']['extracted_tomcat']} #{node['tomcat9']['tomcatdir']}"
+  action :nothing
+  notifies :run, 'execute[folderpermissions]', :immediately
 end
 
 user_name = node['tomcat9']['username']
-group_name = node['tomcat9']['groupname']
 
 # change ownership of /opt/tomcat
-directory user_home do
-  owner user_name
-  group group_name
-  recursive true
-  action :create
+execute 'folderpermissions' do
+  command "sudo chown -R #{user_name}: #{user_home}"
+  action :nothing
+  notifies :run, 'execute[changepermissions]', :immediately
+end
+
+execute 'changepermissions' do
+  command "sudo chmod +x #{node['tomcat9']['tomcatdir']}/bin/*.sh"
+  action :nothing
 end
 
