@@ -11,3 +11,4 @@ default['tomcat9']['download_url'] = "https://archive.apache.org/dist/tomcat/tom
 default['tomcat9']['local_download_path'] = "/tmp/apache-tomcat-#{node['tomcat9']['version']}.tar.gz"
 default['tomcat9']['extracted_tomcat'] = "#{node['tomcat9']['userhome']}/apache-tomcat-#{node['tomcat9']['version']}"
 default['tomcat9']['tomcatdir'] = "#{node['tomcat9']['userhome']}/latest"
+default['tomcat9']['tomcatservicelocation'] = '/etc/systemd/system/tomcat.service'
