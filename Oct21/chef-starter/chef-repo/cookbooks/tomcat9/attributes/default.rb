@@ -13,3 +13,11 @@ default['tomcat9']['local_download_path'] = "/tmp/apache-tomcat-#{node['tomcat9'
 default['tomcat9']['extracted_tomcat'] = "#{node['tomcat9']['userhome']}/apache-tomcat-#{node['tomcat9']['version']}"
 default['tomcat9']['tomcatdir'] = "#{node['tomcat9']['userhome']}/latest"
 default['tomcat9']['tomcatservicelocation'] = '/etc/systemd/system/tomcat.service'
+
+default['tomcat9']['admin_username'] = 'admin'
+default['tomcat9']['admin_password'] = 'admin@123'
+default['tomcat9']['users_xml_location'] = "#{node['tomcat9']['userhome']}/latest/conf/tomcat-users.xml"
+
+default['tomcat9']['context-allow'] = '.*'
+default['tomcat9']['manager_context_location'] = "#{node['tomcat9']['userhome']}/latest/webapps/manager/META-INF/context.xml"
+default['tomcat9']['hostmanager_context_location'] = "#{node['tomcat9']['userhome']}/latest/webapps/host-manager/META-INF/context.xml"

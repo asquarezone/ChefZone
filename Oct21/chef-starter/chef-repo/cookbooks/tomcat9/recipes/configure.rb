@@ -61,3 +61,26 @@ end
 service 'tomcat' do
   action :start
 end
+
+template node['tomcat9']['users_xml_location'] do
+  source 'tomcat-users.xml.erb'
+  action :create
+  notifies :restart, 'service[tomcat]'
+end
+
+template node['tomcat9']['manager_context_location'] do
+  source 'manager-context.xml.erb'
+  action :create
+  notifies :restart, 'service[tomcat]'
+end
+
+template node['tomcat9']['hostmanager_context_location'] do
+  source 'hostmanager-context.xml.erb'
+  action :create
+  notifies :restart, 'service[tomcat]'
+end
+
+
+
+
+
