@@ -1,6 +1,11 @@
 if platform?('ubuntu')
   default['tomcat9']['java_package'] = 'openjdk-11-jdk'
   default['tomcat9']['java_home'] = '/usr/lib/jvm/java-11-openjdk-amd64'
+  default['tomcat9']['java_opts'] = '-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true'
+elsif platform?('centos')
+  default['tomcat9']['java_package'] = 'java-1.8.0-openjdk-devel'
+  default['tomcat9']['java_home'] = '/usr/lib/jvm/jre'
+  default['tomcat9']['java_opts'] = '-Djava.security.egd=file:///dev/urandom'
 end
 
 default['tomcat9']['username'] = 'tomcat'

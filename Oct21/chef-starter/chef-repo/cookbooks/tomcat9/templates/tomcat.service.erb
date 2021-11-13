@@ -9,7 +9,7 @@ User=<%= node['tomcat9']['username'] %>
 Group=<%= node['tomcat9']['groupname'] %>
 
 Environment="JAVA_HOME=<%= node['tomcat9']['java_home'] %>"
-Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
+Environment="JAVA_OPTS=<%= node['tomcat9']['java_opts'] %>"
 
 Environment="CATALINA_BASE=<%= node['tomcat9']['userhome'] %>/latest"
 Environment="CATALINA_HOME=<%= node['tomcat9']['userhome'] %>/latest"
