@@ -1,12 +1,9 @@
 ---
 driver:
-  name: ec2
-  region: us-west-2
-  availability_zone: us-west-2a
-  subnet_id: subnet-07d77c3658db0043d
-  instance_type: t2.micro
-  image_id: ami-03d5c68bab01f3496
-  security_group_ids: ["sg-0a0a302bd3dea231b"]
+  name: azurerm
+  subscription_id: 'your subscription id'
+  location: "East Us"
+  machine_size: 'Standard_B1s'
 
 ## The forwarded_port port feature lets you connect to ports on the VM guest via
 ## localhost on the host.
@@ -14,6 +11,8 @@ driver:
 
 #  network:
 #    - ["forwarded_port", {guest: 80, host: 8080}]
+transport:
+  ssh_key: ~/.ssh/id_kitchen-azurerm
 
 provisioner:
   name: chef_zero
@@ -30,20 +29,14 @@ provisioner:
 verifier:
   name: inspec
 
-transport:
-  ssh_key: ./chefnode.pem
-  connection_timeout: 10
-  connection_retries: 5
-  username: ubuntu
-
 platforms:
   - name: ubuntu-20.04
+    driver:
+      image_urn: 'Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest'
   - name: centos-7
     driver:
-      image_id: ami-0bc06212a56393ee1
-    transport:
-      username: centos
-      ssh_key: chefnode.pem
+      image_urn: 'OpenLogic:CentOS:7.5:latest'
+
 
 suites:
   - name: default
