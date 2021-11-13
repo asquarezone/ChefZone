@@ -51,8 +51,8 @@ execute 'changepermissions' do
   action :nothing
 end
 
-cookbook_file "#{node['tomcat9']['tomcatservicelocation']}" do
-  source 'tomcat.service'
+template "#{node['tomcat9']['tomcatservicelocation']}" do
+  source 'tomcat.service.erb'
   action :create
   notifies :reload, 'service[tomcat]', :immediately
   notifies :enable, 'service[tomcat]', :immediately
@@ -61,4 +61,3 @@ end
 service 'tomcat' do
   action :start
 end
-
