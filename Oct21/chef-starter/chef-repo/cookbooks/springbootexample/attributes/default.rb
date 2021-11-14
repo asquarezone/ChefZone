@@ -1,0 +1,1 @@
+default['springbootexample']['java_package'] = 'openjdk-11-jdk'
