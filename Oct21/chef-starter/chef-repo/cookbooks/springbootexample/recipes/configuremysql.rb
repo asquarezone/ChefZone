@@ -22,3 +22,11 @@ mysql_database 'qtecommerce' do
   action :create
 end
 
+nginx_install 'nginx' do
+  action :install
+end
+
+nginx_service 'nginx' do
+  action :enable
+  delayed_action :start
+end
