@@ -1,9 +1,9 @@
 name 'tomcat9'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
+maintainer 'QualityThought'
+maintainer_email 'qtdevops@gmail.com'
 license 'All Rights Reserved'
 description 'Installs/Configures tomcat9'
-version '0.1.0'
+version '1.0.0'
 chef_version '>= 16.0'
 
 # The `issues_url` points to the location where issues for this cookbook are
@@ -17,3 +17,6 @@ chef_version '>= 16.0'
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/tomcat9'
+
+supports 'centos', '>= 7.0'
+supports 'ubuntu', '>= 20.04'

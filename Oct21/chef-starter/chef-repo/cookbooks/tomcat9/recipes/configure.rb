@@ -79,8 +79,3 @@ template node['tomcat9']['hostmanager_context_location'] do
   action :create
   notifies :restart, 'service[tomcat]'
 end
-
-
-
-
-
