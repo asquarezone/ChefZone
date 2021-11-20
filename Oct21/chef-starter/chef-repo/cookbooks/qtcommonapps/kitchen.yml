@@ -1,9 +1,6 @@
 ---
 driver:
-  name: azurerm
-  subscription_id: ec402c1e-e1fd-4f6d-8501-77ab3f944a13
-  location: "East Us"
-  machine_size: 'Standard_B1s'
+  name: vagrant
 
 ## The forwarded_port port feature lets you connect to ports on the VM guest via
 ## localhost on the host.
@@ -11,8 +8,6 @@ driver:
 
 #  network:
 #    - ["forwarded_port", {guest: 80, host: 8080}]
-transport:
-  ssh_key: ~/.ssh/id_kitchen-azurerm
 
 provisioner:
   name: chef_zero
@@ -31,17 +26,12 @@ verifier:
 
 platforms:
   - name: ubuntu-20.04
-    driver:
-      image_urn: 'Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest'
-  - name: centos-7
-    driver:
-      image_urn: 'OpenLogic:CentOS:7.5:latest'
-
+  - name: centos-8
 
 suites:
   - name: default
     run_list:
-      - recipe[tomcat9::default]
+      - recipe[qtcommonapps::default]
     verifier:
       inspec_tests:
         - test/integration/default
