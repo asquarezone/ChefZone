@@ -17,4 +17,11 @@ log node['qtcommonapps']['message'] do
     level :info
 end
 
+chef_client_cron 'Run Chef Infra Client as a cron job' do
+    minute '*/10'
+    hour '*'
+    action :add
+end
+
+
 
