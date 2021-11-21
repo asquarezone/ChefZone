@@ -1,0 +1,1 @@
+default['qtcommonapps']['message'] = 'from attribute file'
