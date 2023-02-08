@@ -12,5 +12,6 @@ get_distribution() {
 
 }
 
+get_distribution
 # usage
 echo $(get_distribution)
