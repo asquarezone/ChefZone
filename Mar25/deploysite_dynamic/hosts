@@ -1,0 +1,16 @@
+[web]
+localhost
+172.31.4.82 web_package_name=nginx
+
+[web:vars]
+
+
+[db]
+172.31.4.83
+172.31.4.84
+localhost
+
+[app]
+172.31.4.85
+172.31.4.86
+localhost
