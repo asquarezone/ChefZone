@@ -1,0 +1,8 @@
+---
+java_package_name: openjdk-17-jdk
+tomcat_system_username: tomcat
+tomcat_system_groupname: tomcat
+tomcat_homedir: /opt/tomcat
+tomcat_shell: /bin/false
+tomcat_version: "10.1.39"
+tomcat_download_url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.39/bin/apache-tomcat-10.1.39.tar.gz

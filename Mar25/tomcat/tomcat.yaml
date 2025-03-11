@@ -1,0 +1,29 @@
+---
+- name: install tomcat on ubuntu server
+  hosts: appservers
+  become: yes
+  tasks:
+    - name: update packages and install java
+      ansible.builtin.apt:
+        name: "{{ java_package_name }}"
+        update_cache: yes
+        state: present
+    - name: Ensure group tomcat exists
+      ansible.builtin.group:
+        name: "{{ tomcat_system_groupname }}"
+        state: present
+    - name: create tomcat user
+      ansible.builtin.user:
+        name: "{{ tomcat_system_username }}"
+        system: yes
+        create_home: yes
+        group: "{{ tomcat_system_groupname }}"
+        home: "{{ tomcat_homedir }}"
+        shell: "{{ tomcat_shell }}"
+    - name: download tomcat
+      ansible.builtin.unarchive:
+        src: "{{ tomcat_download_url }}"
+        dest: "{{ tomcat_homedir }}"
+        remote_src: yes
+        owner: "{{ tomcat_system_username }}"
+        group: "{{ tomcat_system_groupname }}"
