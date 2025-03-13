@@ -49,9 +49,26 @@
       loop: "{{ script_files.files }}"
       notify:
         - create work done file
+    - name: copy the service file
+      ansible.builtin.copy:
+        src: files/tomcat.service
+        dest: /etc/systemd/system/tomcat.service
+      notify:
+        - restart tomcat
+    - name: ensure tomcat is enabled and started
+      ansible.builtin.systemd_service:
+        name: tomcat
+        enabled: yes
+        state: started
   handlers:
     - name: create work done file
       ansible.builtin.file:
         path: "{{ tomcat_homedir }}/{{ tomcat_version }}"
         state: "touch"
+    - name: restart tomcat
+      ansible.builtin.systemd_service:
+        name: tomcat
+        daemon_reload: yes
+        state: restarted
+      
     
