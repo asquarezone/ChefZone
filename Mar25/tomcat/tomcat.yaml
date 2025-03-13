@@ -20,6 +20,13 @@
         group: "{{ tomcat_system_groupname }}"
         home: "{{ tomcat_homedir }}"
         shell: "{{ tomcat_shell }}"
+    - name: check if it is necessary to download tomcat
+      ansible.builtin.stat:
+        path: "{{ tomcat_homedir }}/{{ tomcat_version }}"
+      register: version_stat
+    - name: print version_stat
+      debug:
+        var: version_stat
     - name: download tomcat
       ansible.builtin.unarchive:
         src: "{{ tomcat_download_url }}"
@@ -27,3 +34,24 @@
         remote_src: yes
         owner: "{{ tomcat_system_username }}"
         group: "{{ tomcat_system_groupname }}"
+        extra_opts:
+          - --strip-components=1
+      when: version_stat.stat.exists == false
+    - name: Find script files
+      ansible.builtin.find:
+        paths: "{{ tomcat_homedir }}/bin/"
+        patterns: '*.sh'
+      register: script_files
+    - name: changing shell file permissions
+      ansible.builtin.file:
+        path: "{{ item.path }}"
+        mode: '0753'
+      loop: "{{ script_files.files }}"
+      notify:
+        - create work done file
+  handlers:
+    - name: create work done file
+      ansible.builtin.file:
+        path: "{{ tomcat_homedir }}/{{ tomcat_version }}"
+        state: "touch"
+    
