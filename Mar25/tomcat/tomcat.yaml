@@ -4,9 +4,8 @@
   become: yes
   tasks:
     - name: update packages and install java
-      ansible.builtin.apt:
+      ansible.builtin.package:
         name: "{{ java_package_name }}"
-        update_cache: yes
         state: present
     - name: Ensure group tomcat exists
       ansible.builtin.group:
