@@ -10,3 +10,5 @@ java_home: /usr/lib/jvm/java-17-openjdk-amd64
 tomcat_admin_username: admin
 tomcat_admin_password: admin@123
 tomcat_manager_allow_ip: ".*"
+application_download_url: "https://mirror.bom.albony.in/jenkins/war-stable/2.492.2/jenkins.war"
+application_name: "jenkins.war"

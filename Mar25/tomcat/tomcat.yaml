@@ -81,6 +81,12 @@
         name: tomcat
         enabled: yes
         state: started
+    - name: deploy application
+      ansible.builtin.get_url:
+        url: "{{ application_download_url }}"
+        dest: "{{ tomcat_homedir }}/webapps/{{ application_name }}"
+      notify:
+        - restart tomcat
   handlers:
     - name: create work done file
       ansible.builtin.file:
