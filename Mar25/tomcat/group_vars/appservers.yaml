@@ -7,3 +7,6 @@ tomcat_shell: /bin/false
 tomcat_version: "10.1.39"
 tomcat_download_url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.39/bin/apache-tomcat-10.1.39.tar.gz
 java_home: /usr/lib/jvm/java-17-openjdk-amd64
+tomcat_admin_username: admin
+tomcat_admin_password: admin@123
+tomcat_manager_allow_ip: ".*"

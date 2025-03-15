@@ -55,6 +55,28 @@
         dest: /etc/systemd/system/tomcat.service
       notify:
         - restart tomcat
+    - name: create tomcat admin user for management
+      ansible.builtin.template:
+        src: templates/tomcat-users.xml.j2
+        dest: "{{ tomcat_homedir }}/conf/tomcat-users.xml"
+        owner: "{{ tomcat_system_username }}"
+        group: "{{ tomcat_system_groupname }}"
+      notify:
+        - restart tomcat
+    - name: allow access for manager app
+      ansible.builtin.template:
+        src: templates/context.xml.j2
+        dest: "{{ tomcat_homedir }}/webapps/manager/META-INF/context.xml"
+        owner: "{{ tomcat_system_username }}"
+        group: "{{ tomcat_system_groupname }}"
+      notify:
+        - restart tomcat
+    - name: allow access for host manager
+      ansible.builtin.template:
+        src: templates/context.xml.j2
+        dest: "{{ tomcat_homedir }}/webapps/host-manager/META-INF/context.xml"
+      notify:
+        - restart tomcat
     - name: ensure tomcat is enabled and started
       ansible.builtin.systemd_service:
         name: tomcat
