@@ -1,0 +1,21 @@
+[Unit]
+Description=Apache Tomcat Web Application Container Deployed By Ansible
+After=network.target
+
+
+[Service]
+Type=forking
+
+Environment=JAVA_HOME={{ java_home }}
+Environment=CATALINA_PID={{ tomcat_homedir }}/temp/tomcat.pid
+Environment=CATALINA_HOME={{ tomcat_homedir }}
+Environment=CATALINA_BASE={{ tomcat_homedir }}
+
+ExecStart={{ tomcat_homedir }}/bin/startup.sh
+ExecStop={{ tomcat_homedir }}/bin/shutdown.sh
+
+User={{ tomcat_system_username }}
+Group={{ tomcat_system_groupname }}
+
+[Install]
+WantedBy=multi-user.target
